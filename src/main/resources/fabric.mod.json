@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "realisticanimals",
+	"version": "${version}",
+	"name": "Realistic Animals",
+	"description": "Passive mobs behave like real animals: herds raise the alarm and flee together, prey avoids predators, animals graze, forage dropped food, rest at night, shelter from storms, remember who hurt them and learn to trust whoever feeds them.",
+	"authors": [
+		"uddinnadd-commits"
+	],
+	"contact": {
+		"sources": "https://github.com/uddinnadd-commits/realistic-animals"
+	},
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.realisticanimals.RealisticAnimals"
+		]
+	},
+	"mixins": [
+		"realisticanimals.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

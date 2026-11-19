@@ -1,0 +1,38 @@
+# Builds the mod on every push and pull request, then uploads the mod jar and the
+# shareable zip (mod jar + full source) as workflow artifacts.
+
+name: build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@v6
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build mod and zip
+        run: ./gradlew build distZip
+      - name: upload mod jar
+        uses: actions/upload-artifact@v7
+        with:
+          name: realistic-animals-jar
+          path: build/libs/
+      - name: upload mod zip
+        uses: actions/upload-artifact@v7
+        with:
+          name: realistic-animals-zip
+          path: build/dist/*.zip

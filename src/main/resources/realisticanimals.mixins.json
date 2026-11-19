@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "com.realisticanimals.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"AnimalMixin",
+		"MobMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
